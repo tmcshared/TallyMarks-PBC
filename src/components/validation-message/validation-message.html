@@ -1,0 +1,4 @@
+<br>
+<ion-item style="padding-left:17px" no-lines *ngIf="control.errors && control.touched" class="error-msg">
+  <span class="text-danger" [innerText]=" validateControl(control.errors)"></span>
+</ion-item>

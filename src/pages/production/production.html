@@ -1,0 +1,203 @@
+<ion-content class="common-bg">
+    <form [formGroup]="productionForm" *ngIf="IsLoaded" (ngSubmit)="saveData()">
+        <!-- User settings-->
+
+        <ng-container formGroupName="fields">
+            <ion-item-group>
+                <ion-item-divider color="secondary" class="bold">Plant Detail</ion-item-divider>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Line Name</ion-label>
+                                <ionic-selectable item-content formControlName="lineId" itemValueField="lineId"
+                                    itemTextField="lineName" [items]="lineNumberList" [canSearch]="true">
+                                </ionic-selectable>
+
+                                <!-- <ion-select formControlName="lineId" cancelText="Cancel" okText="OK">
+                                    <ion-option value="{{item.lineId}}" *ngFor="let item of lineNumberList;">{{item.lineName}}</ion-option>
+                                </ion-select> -->
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.lineId')"></validation-message>
+
+                        </ion-col>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Supervisor</ion-label>
+                                <ionic-selectable item-content formControlName="supervisorId" itemValueField="supervisorID"
+                                    itemTextField="supervisorName" [items]="supervisorList" [canSearch]="true">
+                                </ionic-selectable>
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.supervisorId')"></validation-message>
+
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item-group>
+            <!-- App settings-->
+            <ion-item-group>
+                <ion-item-divider color="secondary" class="bold">Product Detail</ion-item-divider>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label>Brand</ion-label>
+                                <ionic-selectable item-content formControlName="brandId" itemValueField="brandID"
+                                    itemTextField="brandName" [items]="allBrandList" [canSearch]="true">
+                                </ionic-selectable>
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.brandId')"></validation-message>
+
+                        </ion-col>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label>Shift</ion-label>
+
+                                <ionic-selectable item-content formControlName="shift" itemValueField="shiftID"
+                                    itemTextField="shift" [items]="allShiftList" [canSearch]="true">
+                                </ionic-selectable>
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.shift')"></validation-message>
+                        </ion-col>
+
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label>Package</ion-label>
+                                <ionic-selectable item-content formControlName="packageId" itemValueField="packageID"
+                                    itemTextField="packageName" [items]="allPackagesList" [canSearch]="true">
+                                </ionic-selectable>
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.packageId')"></validation-message>
+
+                        </ion-col>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label>Plan speed</ion-label>
+                                <ionic-selectable item-content formControlName="lineSpeed" itemValueField="id"
+                                    itemTextField="id" [items]="lineSpeed" [canSearch]="true">
+                                </ionic-selectable>
+
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.lineSpeed')"></validation-message>
+
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label>Plan Prd</ion-label>
+                                <ion-input formControlName="planPrd" type="text"></ion-input>
+
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.planPrd')"></validation-message>
+
+                        </ion-col>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label>Time Slot</ion-label>
+                                <ion-select formControlName="timeSlot" cancelText="Cancel" okText="OK">
+                                    <ion-option value="12:00-1:00Am">12:00 - 1:00 Am</ion-option>
+                                    <ion-option value="1:00-2:00Am">1:00 - 2:00 Am</ion-option>
+                                    <ion-option value="2:00-3:00Am">2:00 - 3:00 Am</ion-option>
+                                    <ion-option value="3:00-4:00Am">3:00 - 4:00 Am</ion-option>
+                                    <ion-option value="4:00-5:00Am">4:00 - 5:00 Am</ion-option>
+                                    <ion-option value="5:00-6:00Am">5:00 - 6:00 Am</ion-option>
+                                    <ion-option value="6:00-7:00Am">6:00 - 7:00 Am</ion-option>
+                                    <ion-option value="7:00-8:00Am">7:00 - 8:00 Am</ion-option>
+                                    <ion-option value="8:00-9:00Am">8:00 - 9:00 Am</ion-option>
+                                    <ion-option value="9:00-10:00Am">9:00 - 10:00 Am</ion-option>
+                                    <ion-option value="10:00-11:00Am">10:00 - 11:00 Am</ion-option>
+                                    <ion-option value="11:00-12:00Am">11:00 - 12:00 Am</ion-option>
+                                    <ion-option value="12:00-1:00Pm">12:00 - 1:00 Pm</ion-option>
+                                    <ion-option value="1:00-2:00Pm">1:00 - 2:00 Pm</ion-option>
+                                    <ion-option value="2:00-3:00Pm">2:00 - 3:00 Pm</ion-option>
+                                    <ion-option value="3:00-4:00Pm">3:00 - 4:00 Pm</ion-option>
+                                    <ion-option value="4:00-5:00Pm">4:00 - 5:00 Pm</ion-option>
+                                    <ion-option value="5:00-6:00Pm">5:00 - 6:00 Pm</ion-option>
+                                    <ion-option value="6:00-7:00Pm">6:00 - 7:00 Pm</ion-option>
+                                    <ion-option value="7:00-8:00Pm">7:00 - 8:00 Pm</ion-option>
+                                    <ion-option value="8:00-9:00Pm">8:00 - 9:00 Pm</ion-option>
+                                    <ion-option value="9:00-10:00Pm">9:00 - 10:00 Pm</ion-option>
+                                    <ion-option value="10:00-11:00Pm">10:00 - 11:00 Pm</ion-option>
+                                    <ion-option value="11:00-12:00Pm">11:00 - 12:00 Pm</ion-option>
+                                </ion-select>
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.timeSlot')"></validation-message>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label>Hourly Prd</ion-label>
+                                <ion-input formControlName="hourlyPrd" type="number"></ion-input>
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.hourlyPrd')"></validation-message>
+                        </ion-col>
+                        <ion-col col-6>
+                            <ion-item>
+                                <ion-label>Entry Date</ion-label>
+                                <ion-datetime max="2020-10-31" formControlName="entryDate" displayFormat="MMMM/DD/YYYY"></ion-datetime>
+                            </ion-item>
+                            <validation-message [control]="productionForm.get('fields.entryDate')"></validation-message>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item-group>
+        </ng-container>
+        <ion-item-group>
+            <ion-item-divider color="secondary" class="bold">Problem Detail</ion-item-divider>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-6 formGroupName="problems">
+                        <ion-item>
+                            <ion-label>Problem</ion-label>
+
+                            <ionic-selectable item-content formControlName="problem" itemValueField="problemID"
+                                itemTextField="problemDescription" [items]="problemsList" [canSearch]="true">
+                            </ionic-selectable>
+                        </ion-item>
+                        <validation-message [control]="productionForm.get('problems.problem')"></validation-message>
+                        <ion-item>
+                            <ion-label>Down Time</ion-label>
+                            <ion-input formControlName="downTime" type="number"></ion-input>
+                        </ion-item>
+                        <validation-message [control]="productionForm.get('problems.downTime')"></validation-message>
+                        <ion-item>
+                            <ion-label>Stop Time</ion-label>
+                            <ion-input formControlName="stoppageTime" type="number"></ion-input>
+                        </ion-item>
+                        <validation-message [control]="productionForm.get('problems.stoppageTime')"></validation-message>
+                        <ion-item>
+                            <button type="button" (click)="createProblem()" [disabled]="!productionForm.get('problems').valid"
+                                ion-button color="secondary" block outline>Add Problem</button>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-6>
+                        <ion-list>
+                            <ion-item *ngFor="let p of problems; let i=index;">
+                                <p [innerText]="getProblemName(p.problem)"> </p>
+                                <p>Down Time : {{p.downTime}} &nbsp; &nbsp; &nbsp; Stop Time : {{p.stoppageTime}}</p>
+                                <ion-icon style="cursor:pointer" (click)="removeProblem(i)" name="md-remove-circle"
+                                    item-end></ion-icon>
+                            </ion-item>
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
+
+                <br><br>
+                <ion-row>
+                    <ion-col>
+                        <button type="submit" [disabled]="!productionForm.get('fields').valid" ion-button block color="primary">Submit
+                        </button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button block color="danger" type="button" (click)="resetForm()">Reset</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item-group>
+
+    </form>
+</ion-content>

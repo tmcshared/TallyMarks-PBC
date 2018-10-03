@@ -1,0 +1,24 @@
+<!-- -->
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>
+        <strong>Punjab Beverages Production</strong> 
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button tappable (click)="presentNotifications($event)">
+          <ion-icon name="ios-arrow-down-outline"></ion-icon>
+        </button>
+        <button ion-button tappable (click)="goToAccount()">
+          {{pageTitle}}
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding class="animated fadeIn common-bg">
+    <ion-tabs >
+      <ion-tab tabTitle="Production" tabIcon="home" [root]="productionPage"></ion-tab>
+      <ion-tab tabTitle="Rejection" tabIcon="information-circle" [root]="rejectionPage"></ion-tab>
+    </ion-tabs>
+  </ion-content>
+  

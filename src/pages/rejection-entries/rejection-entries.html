@@ -1,0 +1,86 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Today's Rejection Entries</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card style="border-radius: 0;">
+    <ion-card-content>
+      <ion-grid>
+
+
+        <ion-item-divider color="light">
+          <ion-row>
+
+            <ion-col>
+              Line Name
+            </ion-col>
+            <ion-col>
+              Entry Date
+            </ion-col>
+            <ion-col>
+              Area Name
+            </ion-col>
+            <ion-col>
+              Shift
+            </ion-col>
+
+            <ion-col>
+              Position Name
+            </ion-col>
+            <ion-col>
+              Supervisor Name
+            </ion-col>
+          
+          </ion-row>
+
+        </ion-item-divider>
+        <ion-item-divider style="border-bottom:0;">
+          <ion-row *ngFor="let item of entriesList">
+            <ion-col>
+              <ion-item-divider>
+                {{item.lineName}}
+              </ion-item-divider>
+
+            </ion-col>
+            <ion-col>
+              <ion-item-divider>
+                {{item.entryDate}}
+              </ion-item-divider>
+            </ion-col>
+            <ion-col>
+              <ion-item-divider>
+                {{item.areaName}}
+
+              </ion-item-divider>
+            </ion-col>
+            <ion-col>
+              <ion-item-divider>
+                {{item.shift}}
+
+              </ion-item-divider>
+            </ion-col>
+            <ion-col>
+              <ion-item-divider>
+                {{item.positionName}}
+
+              </ion-item-divider>
+            </ion-col>
+            <ion-col>
+              <ion-item-divider>
+                {{item.supervisorName}}
+
+              </ion-item-divider>
+            </ion-col>
+          </ion-row>
+        </ion-item-divider>
+
+      </ion-grid>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

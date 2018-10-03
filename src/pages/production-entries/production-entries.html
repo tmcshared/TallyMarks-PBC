@@ -1,0 +1,75 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Today's Production Entries</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card style="border-radius: 0;">
+    <ion-card-content>
+      <ion-grid>
+
+
+        <ion-item-divider color="light">
+          <ion-row>
+
+            <ion-col col-2>
+              Line Name
+            </ion-col>
+            <ion-col col-2>
+              Entry Date
+            </ion-col>
+            <ion-col col-4>
+              Problem Name
+            </ion-col>
+            <ion-col col-2>
+              Shift
+            </ion-col>
+            <ion-col col-2>
+              Time Slot
+            </ion-col>
+          </ion-row>
+
+        </ion-item-divider>
+        <ion-item-divider  style="border-bottom:0;">
+            <ion-row *ngFor="let item of entriesList">
+                <ion-col col-2>
+                  <ion-item-divider class="cut-text">
+                      {{item.lineName}}
+                  </ion-item-divider>
+                 
+                </ion-col>
+                <ion-col col-2>
+                  <ion-item-divider class="cut-text">
+                      {{item.entryDate}}
+                  </ion-item-divider>
+                </ion-col>
+                <ion-col col-4>
+                  <ion-item-divider class="cut-text" style="width:250px">
+                      {{item.problemName}}
+
+                  </ion-item-divider>
+                </ion-col>
+                <ion-col col-2>
+                  <ion-item-divider class="cut-text">
+                      {{item.shift}}
+
+                  </ion-item-divider>
+                </ion-col>
+                <ion-col col-2>
+                  <ion-item-divider class="cut-text">
+                      {{item.timeSlot}}
+
+                  </ion-item-divider>
+                </ion-col>
+              </ion-row>
+          </ion-item-divider>
+       
+      </ion-grid>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

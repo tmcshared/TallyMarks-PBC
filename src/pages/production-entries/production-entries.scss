@@ -1,0 +1,9 @@
+page-production-entries {
+  .cut-text {
+    text-overflow: ellipsis;
+    overflow-y: auto;
+    overflow: hidden;
+    width: 160px;
+    white-space: nowrap;
+  }
+}
