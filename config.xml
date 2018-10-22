@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.pbc" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.pbc" version="0.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>PBC</name>
     <description>Punjab Bevearage Product</description>
     <author email="firminoata@gmail.com" href="https://ionictheme.com">PBC</author>
@@ -91,4 +91,5 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-sqlite-storage" spec="~2.1.4" />
     <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="6.4.0" />
 </widget>

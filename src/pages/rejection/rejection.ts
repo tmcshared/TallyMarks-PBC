@@ -60,7 +60,7 @@ export class RejectionPage {
     this.rejectionForm.get("supervisorC").disable();
   }
   saveData() {
-    const form = this.rejectionForm.value;
+    const form = { ...this.rejectionForm.value };
     form.areaId = form.areaId.areaId;
     form.lineId = form.lineId.lineId;
     form.positionId = form.positionId.positionId;
@@ -89,10 +89,10 @@ export class RejectionPage {
           message = "Rejection added successfully.";
         }
         this.utility.createToast(message, 5000).present();
-        (<FormArray>this.rejectionForm.get("rejections")).controls.length = 0;
-        this.rejectionForm.reset();
-        this.rejectionForm.markAsUntouched();
-        this.rejectionList = [];
+        //(<FormArray>this.rejectionForm.get("rejections")).controls.length = 0;
+        // this.rejectionForm.reset();
+        // this.rejectionForm.markAsUntouched();
+        // this.rejectionList = [];
       },
       error => {
         spinner.dismiss();
@@ -100,13 +100,25 @@ export class RejectionPage {
       }
     );
   }
+  resetControl(control) {
+    this.rejectionForm.get(control).patchValue(null);
+    this.rejectionForm.get(control).markAsUntouched();
+  }
   registerEvents() {
     this.rejectionForm.get("lineId").valueChanges.subscribe(item => {
       if (!item) return;
+      this.resetControl("areaId");
+      this.resetControl("supervisorA");
+      this.resetControl("supervisorB");
+      this.resetControl("supervisorC");
+
       this.getAreaByLine(parseInt(item.lineId));
       this.getSupervisor(parseInt(item.lineId));
+
       const position = this.rejectionForm.get("positionId").value;
       if (position) {
+        this.rejectionList = [];
+        (<FormArray>this.rejectionForm.get("rejections")).controls.length = 0;
         this.getRejections(
           parseInt(item.lineId),
           parseInt(position.positionId)
@@ -115,6 +127,7 @@ export class RejectionPage {
     });
     this.rejectionForm.get("areaId").valueChanges.subscribe(item => {
       if (!item) return;
+      this.resetControl("positionId");
       this.getPositionByareaId(parseInt(item.areaId));
     });
     this.rejectionForm.get("noOfshift").valueChanges.subscribe(item => {
@@ -133,6 +146,8 @@ export class RejectionPage {
       if (!item) return;
       const line = this.rejectionForm.get("lineId").value;
       if (line) {
+        this.rejectionList = [];
+        (<FormArray>this.rejectionForm.get("rejections")).controls.length = 0;
         this.getRejections(parseInt(line.lineId), parseInt(item.positionId));
       }
     });
@@ -195,6 +210,7 @@ export class RejectionPage {
       .subscribe(
         response => {
           spinner.dismiss();
+          if (!response.GetRejectionsResponse[0].GetRejectionsResult[0]) return;
           this.rejectionList = response.GetRejectionsResponse[0].GetRejectionsResult[0].RejectionsByPositions_Line.map(
             item => {
               return {

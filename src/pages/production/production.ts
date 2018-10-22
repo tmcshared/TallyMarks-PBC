@@ -82,15 +82,17 @@ export class ProductionPage {
   registerEvents() {
     this.productionForm.get("fields.lineId").valueChanges.subscribe(item => {
       if (!item) return;
-
+      this.productionForm.get("fields.supervisorId").patchValue(null);
+      this.productionForm.get("fields.supervisorId").markAsUntouched();
       this.getSupervisorByLine(parseInt(item.lineId));
       this.getProblemByLine(parseInt(item.lineId));
       const Package = this.productionForm.get("fields.packageId").value;
       if (!Package) return;
-      this.getLineSpeed(parseInt(item.lineId), Package.packageId);
+      this.getLineSpeed(parseInt(item.lineId), Package.packageID);
     });
     this.productionForm.get("fields.packageId").valueChanges.subscribe(item => {
       if (!item) return;
+
       const line = this.productionForm.get("fields.lineId").value;
       if (!line) return;
       this.getLineSpeed(parseInt(line.lineId), item.packageID);
@@ -112,7 +114,7 @@ export class ProductionPage {
   }
 
   saveData() {
-    const form = this.productionForm.get("fields").value;
+    const form = { ...this.productionForm.get("fields").value };
     form.brandId = form.brandId.brandID;
     form.lineId = form.lineId.lineId;
     form.lineSpeed = form.lineSpeed.id;
@@ -142,9 +144,9 @@ export class ProductionPage {
           const message =
             response.InsertRecordResponse[0].InsertRecordResult[0];
           this.utility.createToast(message, 5000).present();
-          this.productionForm.reset();
-          this.productionForm.markAsUntouched();
-          this.problems = [];
+          // this.productionForm.reset();
+          // this.productionForm.markAsUntouched();
+          // this.problems = [];
         },
         error => {
           spinner.dismiss();
@@ -308,6 +310,8 @@ export class ProductionPage {
   getLineSpeed(lineId, packageId) {
     const spinner = this.utility.createLoader();
     spinner.present();
+    this.productionForm.get("fields.lineSpeed").patchValue(null);
+    this.productionForm.get("fields.lineSpeed").markAsUntouched();
     this.service
       .post(
         URL.PRODUCTION,

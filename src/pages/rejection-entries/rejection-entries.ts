@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NetworkManagerService } from '../../services/network-manager.service';
-import { UtilityService } from '../../services/utility.service';
-import { RESPONSE_MESSAGE } from '../../shared/constant/message';
-import { REJECTION } from './../../shared/constant/request/xmlRejectionRequest';
+import { Component } from "@angular/core";
+import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { NetworkManagerService } from "../../services/network-manager.service";
+import { UtilityService } from "../../services/utility.service";
+import { RESPONSE_MESSAGE } from "../../shared/constant/message";
+import { REJECTION } from "./../../shared/constant/request/xmlRejectionRequest";
 import { URL } from "../../shared/constant/config";
 /**
  * Generated class for the RejectionEntriesPage page.
@@ -14,8 +14,8 @@ import { URL } from "../../shared/constant/config";
 
 @IonicPage()
 @Component({
-  selector: 'page-rejection-entries',
-  templateUrl: 'rejection-entries.html',
+  selector: "page-rejection-entries",
+  templateUrl: "rejection-entries.html"
 })
 export class RejectionEntriesPage {
   entriesList = [];
@@ -38,9 +38,9 @@ export class RejectionEntriesPage {
     this.service.post(URL.REJECTION, REJECTION.TODAY_ENTRIES()).subscribe(
       response => {
         spinner.dismiss();
+        if (!response.GetTodayRejectionsResponse[0]) return;
         this.entriesList = response.GetTodayRejectionsResponse[0].GetTodayRejectionsResult[0].PreviuosRejections.map(
           item => {
-            debugger
             return {
               areaName: item.AreaName[0],
               entryDate: item.EntryDate[0],
@@ -50,12 +50,11 @@ export class RejectionEntriesPage {
               rejectionName: item.RejectionName[0],
               shift: item.Shift[0],
               supervisorName: item.SupervisorName[0],
-              timeSlot: item.TimeSlot[0],
+              timeSlot: item.TimeSlot[0]
             };
           }
         );
-        this.entriesList.push(this.entriesList[0])
-
+        this.entriesList.push(this.entriesList[0]);
       },
       error => {
         spinner.dismiss();
