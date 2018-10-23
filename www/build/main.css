@@ -26368,7 +26368,7 @@ page-production .rad .rad-icon:after {
   transform: scale(0);
 }
 
-page-production .rad.item-radio > input[type=radio]:checked ~ .rad-icon:after {
+page-production .rad.item-radio > input[type="radio"]:checked ~ .rad-icon:after {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
@@ -26380,7 +26380,7 @@ page-production .rad .item-content {
   padding-left: 0px;
 }
 
-page-production .rad.item-radio > input[type=radio]:checked ~ .item-content {
+page-production .rad.item-radio > input[type="radio"]:checked ~ .item-content {
   background-color: #fff;
 }
 
@@ -26392,11 +26392,11 @@ page-production .rad-inline.item {
 }
 
 page-production .rad-blue .rad-icon:after {
-  background: #2196F3 !important;
+  background: #2196f3 !important;
 }
 
 page-production .rad-blue .rad-icon:before {
-  border-color: #2196F3 !important;
+  border-color: #2196f3 !important;
 }
 
 page-production-entries .cut-text {

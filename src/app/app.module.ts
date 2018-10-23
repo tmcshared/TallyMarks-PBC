@@ -6,22 +6,21 @@ import { IonicStorageModule } from "@ionic/storage";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { Keyboard } from "@ionic-native/keyboard";
-import { NetworkManagerService } from './../services/network-manager.service';
+import { NetworkManagerService } from "./../services/network-manager.service";
 import { MyApp } from "./app.component";
 import { SettingsPage } from "../pages/settings/settings";
 import { UtilityService } from "../services/utility.service";
-import { ValidatorService } from './../services/validator.service';
-import { IonicSelectableModule } from 'ionic-selectable';
+import { ValidatorService } from "./../services/validator.service";
+import { IonicSelectableModule } from "ionic-selectable";
 @NgModule({
   declarations: [MyApp, SettingsPage],
   imports: [
-
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp, {
       scrollPadding: false,
-      scrollAssist: true,
-      autoFocusAssist: false
+      scrollAssist: false,
+      autoFocusAssist: true
     }),
     IonicStorageModule.forRoot({
       name: "pbc",

@@ -484,8 +484,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* MyApp */], {
                 scrollPadding: false,
-                scrollAssist: true,
-                autoFocusAssist: false
+                scrollAssist: false,
+                autoFocusAssist: true
             }, {
                 links: [
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
@@ -550,21 +550,27 @@ var MyApp = (function () {
         this.statusBar = statusBar;
         this.splashScreen = splashScreen;
         this.keyboard = keyboard;
-        this.rootPage = 'TabsPage';
+        this.rootPage = "TabsPage";
         this.initializeApp();
     }
     MyApp.prototype.initializeApp = function () {
         var _this = this;
         this.platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
-            //*** Control Splash Screen
-            // this.splashScreen.show();
-            // this.splashScreen.hide();
+            if (_this.platform.is("ios")) {
+                var appEl_1 = document.getElementsByTagName("ION-APP")[0], appElHeight_1 = appEl_1.clientHeight;
+                _this.keyboard.disableScroll(true);
+                window.addEventListener("native.keyboardshow", function (e) {
+                    appEl_1.style.height = appElHeight_1 - e.keyboardHeight + "px";
+                });
+                window.addEventListener("native.keyboardhide", function () {
+                    appEl_1.style.height = "100%";
+                });
+            }
             //*** Control Status Bar
             _this.statusBar.styleDefault();
             _this.statusBar.overlaysWebView(false);
             //*** Control Keyboard
-            _this.keyboard.disableScroll(true);
         });
     };
     return MyApp;
