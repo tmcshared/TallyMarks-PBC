@@ -132,9 +132,16 @@
                 </ion-row>
                 <ion-row *ngIf="rejectionForm.get('rejections').controls.length>0">
                     <ion-col>
-                        <ion-card style=" border-radius: 0;" formArrayName="rejections">
+                        <ion-card formArrayName="rejections">
                             <ion-card-content>
                                 <ion-row>
+                                    All <span *ngIf="rejectionForm.get('rejections').controls.length>1"> &nbsp;
+                                        {{rejectionForm.get('rejections').controls.length}} &nbsp;</span>
+                                    fields are
+                                    required
+                                </ion-row>
+                                <ion-row>
+
                                     <ion-col *ngFor="let item of rejectionForm.get('rejections').controls; let i=index">
                                         <ng-container [formGroupName]="i">
                                             <ion-item>

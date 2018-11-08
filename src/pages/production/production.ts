@@ -114,6 +114,7 @@ export class ProductionPage {
   }
 
   saveData() {
+    debugger;
     const form = { ...this.productionForm.get("fields").value };
     form.brandId = form.brandId.brandID;
     form.lineId = form.lineId.lineId;
@@ -146,7 +147,7 @@ export class ProductionPage {
           this.utility.createToast(message, 5000).present();
           // this.productionForm.reset();
           // this.productionForm.markAsUntouched();
-          // this.problems = [];
+          this.problems = [];
         },
         error => {
           spinner.dismiss();

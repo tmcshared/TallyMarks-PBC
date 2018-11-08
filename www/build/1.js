@@ -17122,6 +17122,7 @@ var ProductionPage = (function () {
     };
     ProductionPage.prototype.saveData = function () {
         var _this = this;
+        debugger;
         var form = __assign({}, this.productionForm.get("fields").value);
         form.brandId = form.brandId.brandID;
         form.lineId = form.lineId.lineId;
@@ -17152,7 +17153,7 @@ var ProductionPage = (function () {
             _this.utility.createToast(message, 5000).present();
             // this.productionForm.reset();
             // this.productionForm.markAsUntouched();
-            // this.problems = [];
+            _this.problems = [];
         }, function (error) {
             spinner.dismiss();
             _this.utility.createToast(__WEBPACK_IMPORTED_MODULE_5__shared_constant_message__["a" /* RESPONSE_MESSAGE */].ERROR, 3000).present();
