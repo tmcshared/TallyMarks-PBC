@@ -108,11 +108,11 @@ var REJECTION = {
         return __WEBPACK_IMPORTED_MODULE_0__xmlRequest__["a" /* XML_REQUEST */].WRAPPER(" <GetRejections xmlns=\"http://tempuri.org/\">\n                                    <Line_Id>" + lineId + "</Line_Id>\n                                    <Position_Id>" + positionId + "</Position_Id>\n                                </GetRejections>");
     },
     ADD_REJECTION: function (model) {
-        return __WEBPACK_IMPORTED_MODULE_0__xmlRequest__["a" /* XML_REQUEST */].WRAPPER("<InsertRejectionData xmlns=\"http://tempuri.org/\">\n    <line_Id>" + model.lineId + "</line_Id>\n    <supervisor_A>" + model.supervisorA + "</supervisor_A>\n    <supervisor_B>" + model.supervisorB + "</supervisor_B>\n    <supervisor_C>" + (model.supervisorC ? model.supervisorC : 0) + "</supervisor_C>\n    <Shift>" + model.shift + "</Shift>\n    <time_Slot>" + model.timeSlot + "</time_Slot>\n    <timing_Order>0</timing_Order>\n    <Entry_Date>" + model.entryDate + "</Entry_Date>\n    <area_Id>" + model.areaId + "</area_Id>\n    <position_Id>" + model.positionId + "</position_Id>\n    <rejection_Ids>" + model.rejectionIds + "</rejection_Ids>\n    <number_ofRejections>" + model.rejectionValue + "</number_ofRejections>\n</InsertRejectionData>");
+        return __WEBPACK_IMPORTED_MODULE_0__xmlRequest__["a" /* XML_REQUEST */].WRAPPER("<InsertRejectionData xmlns=\"http://tempuri.org/\">\n    <line_Id>" + model.lineId + "</line_Id>\n    <supervisor_A>" + model.supervisorA + "</supervisor_A>\n    <supervisor_B>" + model.supervisorB + "</supervisor_B>\n    <supervisor_C>" + (model.supervisorC ? model.supervisorC : 0) + "</supervisor_C>\n    <Shift>" + model.shift + "</Shift>\n    <time_Slot>" + model.timeSlot + "</time_Slot>\n    <timingsOrder>" + model.timingsOrder + "</timingsOrder>\n    <Entry_Date>" + model.entryDate + "</Entry_Date>\n    <area_Id>" + model.areaId + "</area_Id>\n    <position_Id>" + model.positionId + "</position_Id>\n    <rejection_Ids>" + model.rejectionIds + "</rejection_Ids>\n    <number_ofRejections>" + model.rejectionValue + "</number_ofRejections>\n</InsertRejectionData>");
     },
     TODAY_ENTRIES: function () {
         return __WEBPACK_IMPORTED_MODULE_0__xmlRequest__["a" /* XML_REQUEST */].WRAPPER(" <GetTodayRejections xmlns=\"http://tempuri.org/\"/>");
-    },
+    }
 };
 //# sourceMappingURL=xmlRejectionRequest.js.map
 

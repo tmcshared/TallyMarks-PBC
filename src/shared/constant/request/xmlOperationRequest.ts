@@ -37,7 +37,7 @@ export const OPERATION = {
     <supervisorID>${model.supervisorId}</supervisorID>
     <shift>${model.shift}</shift>
     <timeSlot>${model.timeSlot}</timeSlot>
-    <timingsOrder>${model.lineId}</timingsOrder>
+    <timingsOrder>${model.timingsOrder}</timingsOrder>
     <brandID>${model.brandId}</brandID>
     <packageID>${model.packageId}</packageID>
     <hourlyProduction>${model.hourlyPrd}</hourlyProduction>
@@ -47,10 +47,12 @@ export const OPERATION = {
     <problemString>${model.problem ? model.problem : 0}</problemString>
     <stoppageString>${model.stopTime ? model.stopTime : 0}</stoppageString>
     <downTimeString>${model.downTime ? model.downTime : 0}</downTimeString>
-    <counter>${model.counter }</counter>
+    <counter>${model.counter}</counter>
 </InsertRecord>`);
   },
   TODAY_ENTRIES: () => {
-    return XML_REQUEST.WRAPPER(`<GetTodaysEntries xmlns="http://tempuri.org/"/>`);
-  },
+    return XML_REQUEST.WRAPPER(
+      `<GetTodaysEntries xmlns="http://tempuri.org/"/>`
+    );
+  }
 };

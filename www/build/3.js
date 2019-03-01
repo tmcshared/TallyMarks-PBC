@@ -111,11 +111,11 @@ var OPERATION = {
         return __WEBPACK_IMPORTED_MODULE_0__xmlRequest__["a" /* XML_REQUEST */].WRAPPER("  <GetProblemsByLine xmlns=\"http://tempuri.org/\">\n                                      <lineID>" + lineId + "</lineID>\n                                  </GetProblemsByLine>");
     },
     ADD_PRODUCTION: function (model) {
-        return __WEBPACK_IMPORTED_MODULE_0__xmlRequest__["a" /* XML_REQUEST */].WRAPPER("<InsertRecord xmlns=\"http://tempuri.org/\">\n    <lineID>" + model.lineId + "</lineID>\n    <supervisorID>" + model.supervisorId + "</supervisorID>\n    <shift>" + model.shift + "</shift>\n    <timeSlot>" + model.timeSlot + "</timeSlot>\n    <timingsOrder>" + model.lineId + "</timingsOrder>\n    <brandID>" + model.brandId + "</brandID>\n    <packageID>" + model.packageId + "</packageID>\n    <hourlyProduction>" + model.hourlyPrd + "</hourlyProduction>\n    <entryDate>" + model.entryDate + "</entryDate>\n    <lineSpeed>" + model.lineSpeed + "</lineSpeed>\n    <planProduction>" + model.planPrd + "</planProduction>\n    <problemString>" + (model.problem ? model.problem : 0) + "</problemString>\n    <stoppageString>" + (model.stopTime ? model.stopTime : 0) + "</stoppageString>\n    <downTimeString>" + (model.downTime ? model.downTime : 0) + "</downTimeString>\n    <counter>" + model.counter + "</counter>\n</InsertRecord>");
+        return __WEBPACK_IMPORTED_MODULE_0__xmlRequest__["a" /* XML_REQUEST */].WRAPPER("<InsertRecord xmlns=\"http://tempuri.org/\">\n    <lineID>" + model.lineId + "</lineID>\n    <supervisorID>" + model.supervisorId + "</supervisorID>\n    <shift>" + model.shift + "</shift>\n    <timeSlot>" + model.timeSlot + "</timeSlot>\n    <timingsOrder>" + model.timingsOrder + "</timingsOrder>\n    <brandID>" + model.brandId + "</brandID>\n    <packageID>" + model.packageId + "</packageID>\n    <hourlyProduction>" + model.hourlyPrd + "</hourlyProduction>\n    <entryDate>" + model.entryDate + "</entryDate>\n    <lineSpeed>" + model.lineSpeed + "</lineSpeed>\n    <planProduction>" + model.planPrd + "</planProduction>\n    <problemString>" + (model.problem ? model.problem : 0) + "</problemString>\n    <stoppageString>" + (model.stopTime ? model.stopTime : 0) + "</stoppageString>\n    <downTimeString>" + (model.downTime ? model.downTime : 0) + "</downTimeString>\n    <counter>" + model.counter + "</counter>\n</InsertRecord>");
     },
     TODAY_ENTRIES: function () {
         return __WEBPACK_IMPORTED_MODULE_0__xmlRequest__["a" /* XML_REQUEST */].WRAPPER("<GetTodaysEntries xmlns=\"http://tempuri.org/\"/>");
-    },
+    }
 };
 //# sourceMappingURL=xmlOperationRequest.js.map
 

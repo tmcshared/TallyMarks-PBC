@@ -34,18 +34,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
 
       if (this.platform.is("ios")) {
-        let appEl = <HTMLElement>document.getElementsByTagName("ION-APP")[0],
-          appElHeight = appEl.clientHeight;
-
-        this.keyboard.disableScroll(true);
-
-        window.addEventListener("native.keyboardshow", e => {
-          appEl.style.height = appElHeight - (<any>e).keyboardHeight + "px";
-        });
-
-        window.addEventListener("native.keyboardhide", () => {
-          appEl.style.height = "100%";
-        });
+        this.keyboard.hideKeyboardAccessoryBar(false);
       }
 
       //*** Control Status Bar

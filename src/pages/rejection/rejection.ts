@@ -23,6 +23,8 @@ export class RejectionPage {
   supervisorList = [];
   rejectionList = [];
   IsLoaded = false;
+  maxDate: any = new Date();
+
   constructor(
     private service: NetworkManagerService,
     private utility: UtilityService,
@@ -34,8 +36,10 @@ export class RejectionPage {
     this.events.publish("selectedTab", "rejection");
     this.getLines();
     this.registerEvents();
-    this.shiftList.push({ Id: "shiftA", text: "Shift A" });
-    this.shiftList.push({ Id: "shiftB", text: "Shift B" });
+    this.shiftList.push({ Id: "Shift A", text: "Shift A" });
+    this.shiftList.push({ Id: "Shift B", text: "Shift B" });
+
+    this.maxDate = this.utility.formatDate(new Date());
   }
   ionViewDidLoad() {
     this.InitializeForm();
@@ -67,6 +71,7 @@ export class RejectionPage {
     form.supervisorA = form.supervisorA.supervisorId;
     form.supervisorB = form.supervisorB.supervisorId;
     form.supervisorC = form.supervisorC ? form.supervisorC.supervisorId : 0;
+    form.timingsOrder = this.utility.getTimingOrder(form.timeSlot);
 
     form.entryDate = moment(form.entryDate).format("DD/MM/YYYY");
     for (const k in form.rejections) {
@@ -133,7 +138,7 @@ export class RejectionPage {
     this.rejectionForm.get("noOfshift").valueChanges.subscribe(item => {
       if (parseInt(item) === 3) {
         if (this.shiftList.length === 2) {
-          this.shiftList.push({ Id: "shiftC", text: "Shift C" });
+          this.shiftList.push({ Id: "Shift C", text: "Shift C" });
         }
         this.rejectionForm.get("supervisorC").enable();
       } else {

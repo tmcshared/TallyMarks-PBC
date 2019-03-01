@@ -26,6 +26,7 @@ export class ProductionPage {
   problemsList = [];
   problems = [];
   IsLoaded = false;
+  maxDate: any = new Date();
 
   constructor(
     private service: NetworkManagerService,
@@ -36,6 +37,7 @@ export class ProductionPage {
   ionViewDidLoad() {
     this.InitializeForm();
     this.IsLoaded = true;
+    this.maxDate = this.utility.formatDate(new Date());
   }
   ionViewWillEnter() {
     this.events.publish("selectedTab", "production");
@@ -114,15 +116,14 @@ export class ProductionPage {
   }
 
   saveData() {
-    debugger;
     const form = { ...this.productionForm.get("fields").value };
     form.brandId = form.brandId.brandID;
     form.lineId = form.lineId.lineId;
     form.lineSpeed = form.lineSpeed.id;
     form.packageId = form.packageId.packageID;
-    form.shift = form.shift.shiftID;
+    form.shift = form.shift.shift;
     form.supervisorId = form.supervisorId.supervisorID;
-
+    form.timingsOrder = this.utility.getTimingOrder(form.timeSlot);
     form.entryDate = moment(form.entryDate).format("DD/MM/YYYY");
     for (const p of this.problems) {
       form.problem = form.problem ? `${form.problem},${p.problem}` : p.problem;
@@ -136,6 +137,7 @@ export class ProductionPage {
     form.counter = this.problems.length;
     const spinner = this.utility.createLoader();
     console.log(form);
+
     spinner.present();
     this.service
       .insert(URL.PRODUCTION, OPERATION.ADD_PRODUCTION(form))

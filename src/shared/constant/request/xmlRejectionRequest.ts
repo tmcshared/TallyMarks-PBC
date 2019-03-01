@@ -35,7 +35,7 @@ export const REJECTION = {
     <supervisor_C>${model.supervisorC ? model.supervisorC : 0}</supervisor_C>
     <Shift>${model.shift}</Shift>
     <time_Slot>${model.timeSlot}</time_Slot>
-    <timing_Order>0</timing_Order>
+    <timingsOrder>${model.timingsOrder}</timingsOrder>
     <Entry_Date>${model.entryDate}</Entry_Date>
     <area_Id>${model.areaId}</area_Id>
     <position_Id>${model.positionId}</position_Id>
@@ -44,6 +44,8 @@ export const REJECTION = {
 </InsertRejectionData>`);
   },
   TODAY_ENTRIES: () => {
-    return XML_REQUEST.WRAPPER(` <GetTodayRejections xmlns="http://tempuri.org/"/>`);
-  },
+    return XML_REQUEST.WRAPPER(
+      ` <GetTodayRejections xmlns="http://tempuri.org/"/>`
+    );
+  }
 };

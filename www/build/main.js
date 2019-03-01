@@ -206,14 +206,75 @@ var UtilityService = (function () {
             content: message
         });
     };
+    UtilityService.prototype.getTimingOrder = function (timeSlot) {
+        switch (timeSlot) {
+            case "6:00 - 7:00 AM":
+                return 1;
+            case "7:00 - 8:00 AM":
+                return 2;
+            case "8:00 - 9:00 AM":
+                return 3;
+            case "9:00 - 10:00 AM":
+                return 4;
+            case "10:00 - 11:00 AM":
+                return 5;
+            case "11:00 - 12:00 AM":
+                return 6;
+            case "12:00 - 1:00 PM":
+                return 7;
+            case "1:00 - 2:00 PM":
+                return 8;
+            case "2:00 - 3:00 PM":
+                return 9;
+            case "3:00 - 4:00 PM":
+                return 10;
+            case "4:00 - 5:00 PM":
+                return 11;
+            case "5:00 - 6:00 PM":
+                return 12;
+            case "6:00 - 7:00 PM":
+                return 13;
+            case "7:00 - 8:00 PM":
+                return 14;
+            case "8:00 - 9:00 PM":
+                return 15;
+            case "9:00 - 10:00 PM":
+                return 16;
+            case "10:00 - 11:00 PM":
+                return 17;
+            case "11:00 - 12:00 PM":
+                return 18;
+            case "12:00 - 1:00 AM":
+                return 19;
+            case "1:00 - 2:00 AM":
+                return 20;
+            case "2:00 - 3:00 AM":
+                return 21;
+            case "3:00 - 4:00 AM":
+                return 22;
+            case "4:00 - 5:00 AM":
+                return 23;
+            case "5:00 - 6:00 AM":
+                return 24;
+            default:
+        }
+    };
+    UtilityService.prototype.formatDate = function (date) {
+        var d = new Date(date), month = "" + (d.getMonth() + 1), day = "" + d.getDate(), year = d.getFullYear();
+        if (month.length < 2)
+            month = "0" + month;
+        if (day.length < 2)
+            day = "0" + day;
+        return [year, month, day].join("-");
+    };
     return UtilityService;
 }());
 UtilityService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */]) === "function" && _b || Object])
 ], UtilityService);
 
+var _a, _b;
 //# sourceMappingURL=utility.service.js.map
 
 /***/ }),
@@ -558,14 +619,7 @@ var MyApp = (function () {
         this.platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             if (_this.platform.is("ios")) {
-                var appEl_1 = document.getElementsByTagName("ION-APP")[0], appElHeight_1 = appEl_1.clientHeight;
-                _this.keyboard.disableScroll(true);
-                window.addEventListener("native.keyboardshow", function (e) {
-                    appEl_1.style.height = appElHeight_1 - e.keyboardHeight + "px";
-                });
-                window.addEventListener("native.keyboardhide", function () {
-                    appEl_1.style.height = "100%";
-                });
+                _this.keyboard.hideKeyboardAccessoryBar(false);
             }
             //*** Control Status Bar
             _this.statusBar.styleDefault();
