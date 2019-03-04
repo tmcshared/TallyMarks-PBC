@@ -42,11 +42,11 @@ var map = {
 		2
 	],
 	"../pages/rejection/rejection.module": [
-		765,
+		766,
 		0
 	],
 	"../pages/tabs/tabs.module": [
-		766,
+		765,
 		5
 	]
 };
@@ -271,10 +271,10 @@ var UtilityService = (function () {
 }());
 UtilityService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* LoadingController */]])
 ], UtilityService);
 
-var _a, _b;
 //# sourceMappingURL=utility.service.js.map
 
 /***/ }),
@@ -554,8 +554,8 @@ AppModule = __decorate([
                     { loadChildren: '../pages/production-entries/production-entries.module#ProductionEntriesPageModule', name: 'ProductionEntriesPage', segment: 'production-entries', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/production/production.module#ProductionPageModule', name: 'ProductionPage', segment: 'production', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/rejection-entries/rejection-entries.module#RejectionEntriesPageModule', name: 'RejectionEntriesPage', segment: 'rejection-entries', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/rejection/rejection.module#RejectionPageModule', name: 'RejectionPage', segment: 'rejection', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/rejection/rejection.module#RejectionPageModule', name: 'RejectionPage', segment: 'rejection', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["a" /* IonicStorageModule */].forRoot({
